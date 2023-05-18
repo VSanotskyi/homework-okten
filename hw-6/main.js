@@ -66,18 +66,15 @@ console.log(sortNums(numbers, "descending"));
 // monthDuration -- відфільтрувати , залишивши тільки курси з тривалістю більше
 // 5 місяців -- за допомоги map перетворити кожен елемент на наступний тип
 // {id,title,monthDuration} =========================
-let coursesAndDurationArray = [
-    {title: "JavaScript Complex", monthDuration: 5},
+let coursesAndDurationArray = [{title: "JavaScript Complex", monthDuration: 5},
     {title: "Java Complex", monthDuration: 6},
     {title: "Python Complex", monthDuration: 6},
     {title: "QA Complex", monthDuration: 4},
     {title: "FullStack", monthDuration: 7},
-    {title: "Frontend", monthDuration: 4},
-];
+    {title: "Frontend", monthDuration: 4}];
 
 const sortCurses = (courses) => {
-    return courses.sort(
-        (a, b) => a.monthDuration - b.monthDuration);
+    return courses.sort((a, b) => a.monthDuration - b.monthDuration);
 };
 
 console.log(sortCurses(coursesAndDurationArray));
@@ -98,11 +95,63 @@ const addId = (courses) => courses.map(({title, monthDuration}, index) => {
 console.log(addId(coursesAndDurationArray));
 
 // описати колоду карт (від 6 до туза без джокерів) todo
+const cards = [{cardSuit: "spade", value: "6", color: "black"},
+    {cardSuit: "diamond", value: "6", color: "red"},
+    {cardSuit: "heart", value: "6", color: "red"},
+    {cardSuit: "clubs", value: "6", color: "black"},
+    {cardSuit: "spade", value: "7", color: "black"},
+    {cardSuit: "diamond", value: "7", color: "red"},
+    {cardSuit: "heart", value: "7", color: "red"},
+    {cardSuit: "clubs", value: "7", color: "black"},
+    {cardSuit: "spade", value: "8", color: "black"},
+    {cardSuit: "diamond", value: "8", color: "red"},
+    {cardSuit: "heart", value: "8", color: "red"},
+    {cardSuit: "clubs", value: "8", color: "black"},
+    {cardSuit: "spade", value: "9", color: "black"},
+    {cardSuit: "diamond", value: "9", color: "red"},
+    {cardSuit: "heart", value: "9", color: "red"},
+    {cardSuit: "clubs", value: "9", color: "black"},
+    {cardSuit: "spade", value: "10", color: "black"},
+    {cardSuit: "diamond", value: "10", color: "red"},
+    {cardSuit: "heart", value: "10", color: "red"},
+    {cardSuit: "clubs", value: "10", color: "black"},
+    {cardSuit: "spade", value: "jack", color: "black"},
+    {cardSuit: "diamond", value: "jack", color: "red"},
+    {cardSuit: "heart", value: "jack", color: "red"},
+    {cardSuit: "clubs", value: "jack", color: "black"},
+    {cardSuit: "spade", value: "queen", color: "black"},
+    {cardSuit: "diamond", value: "queen", color: "red"},
+    {cardSuit: "heart", value: "queen", color: "red"},
+    {cardSuit: "clubs", value: "queen", color: "black"},
+    {cardSuit: "spade", value: "king", color: "black"},
+    {cardSuit: "diamond", value: "king", color: "red"},
+    {cardSuit: "heart", value: "king", color: "red"},
+    {cardSuit: "clubs", value: "king", color: "black"},
+    {cardSuit: "spade", value: "ace", color: "black"},
+    {cardSuit: "diamond", value: "ace", color: "red"},
+    {cardSuit: "heart", value: "ace", color: "red"},
+    {cardSuit: "clubs", value: "ace", color: "black"}];
+
 // - знайти піковий туз
+const aceSpade = cards.filter(
+    card => card.cardSuit === "spade" && card.value === "ace");
+console.log(aceSpade);
 // - всі шістки
+const allSixes = cards.filter(card => card.value === "6");
+console.log(allSixes);
 // - всі червоні карти
+const allRedCards = cards.filter(card => card.color === "red");
+console.log(allRedCards);
 // - всі буби
+const diamondCards = cards.filter(card => card.cardSuit === "diamond");
+console.log(diamondCards);
 // - всі трефи від 9 та більше
+const clubsCards = cards.filter(card => {
+    return card.cardSuit =
+        "clubs" && card.value !== "6" && card.value !== "7" && card.value !==
+        "8";
+});
+console.log(clubsCards);
 
 // {
 // cardSuit: '', // 'spade', 'diamond','heart', 'clubs' value: '', // '6'-'10',
@@ -121,95 +170,88 @@ console.log(addId(coursesAndDurationArray));
 // --написати пошук всіх об'єктів, в який в modules є sass
 // --написати пошук всіх об'єктів, в який в modules є docker
 
-const coursesArray = [
-    {
-        title: "JavaScript Complex",
-        monthDuration: 5,
-        hourDuration: 909,
-        modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "node.js"],
-    },
-    {
-        title: "Java Complex",
-        monthDuration: 6,
-        hourDuration: 909,
-        modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "java core",
-                  "java advanced"],
-    },
-    {
-        title: "Python Complex",
-        monthDuration: 6,
-        hourDuration: 909,
-        modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "python core",
-                  "python advanced"],
-    },
-    {
-        title: "QA Complex",
-        monthDuration: 4,
-        hourDuration: 909,
-        modules: ["html", "css", "js", "mysql", "mongodb", "git", "QA/QC"],
-    },
-    {
-        title: "FullStack",
-        monthDuration: 7,
-        hourDuration: 909,
-        modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "node.js",
-                  "python",
-                  "java"],
-    },
-    {
-        title: "Frontend",
-        monthDuration: 4,
-        hourDuration: 909,
-        modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "sass"],
-    },
-];
+const coursesArray = [{
+    title: "JavaScript Complex",
+    monthDuration: 5,
+    hourDuration: 909,
+    modules: ["html",
+              "css",
+              "js",
+              "mysql",
+              "mongodb",
+              "react",
+              "angular",
+              "aws",
+              "docker",
+              "git",
+              "node.js"],
+}, {
+    title: "Java Complex",
+    monthDuration: 6,
+    hourDuration: 909,
+    modules: ["html",
+              "css",
+              "js",
+              "mysql",
+              "mongodb",
+              "angular",
+              "aws",
+              "docker",
+              "git",
+              "java core",
+              "java advanced"],
+}, {
+    title: "Python Complex",
+    monthDuration: 6,
+    hourDuration: 909,
+    modules: ["html",
+              "css",
+              "js",
+              "mysql",
+              "mongodb",
+              "angular",
+              "aws",
+              "docker",
+              "python core",
+              "python advanced"],
+}, {
+    title: "QA Complex",
+    monthDuration: 4,
+    hourDuration: 909,
+    modules: ["html", "css", "js", "mysql", "mongodb", "git", "QA/QC"],
+}, {
+    title: "FullStack",
+    monthDuration: 7,
+    hourDuration: 909,
+    modules: ["html",
+              "css",
+              "js",
+              "mysql",
+              "mongodb",
+              "react",
+              "angular",
+              "aws",
+              "docker",
+              "git",
+              "node.js",
+              "python",
+              "java"],
+}, {
+    title: "Frontend",
+    monthDuration: 4,
+    hourDuration: 909,
+    modules: ["html",
+              "css",
+              "js",
+              "mysql",
+              "mongodb",
+              "react",
+              "angular",
+              "aws",
+              "docker",
+              "git",
+              "sass"],
+}];
 
 const findModulesSass = (arr) => {
     return arr.filter(a => a.modules.includes("sass"));
