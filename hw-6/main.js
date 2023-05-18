@@ -94,7 +94,7 @@ const addId = (courses) => courses.map(({title, monthDuration}, index) => {
 
 console.log(addId(coursesAndDurationArray));
 
-// описати колоду карт (від 6 до туза без джокерів) todo
+// описати колоду карт (від 6 до туза без джокерів)
 const cards = [{cardSuit: "spade", value: "6", color: "black"},
     {cardSuit: "diamond", value: "6", color: "red"},
     {cardSuit: "heart", value: "6", color: "red"},
@@ -146,11 +146,9 @@ console.log(allRedCards);
 const diamondCards = cards.filter(card => card.cardSuit === "diamond");
 console.log(diamondCards);
 // - всі трефи від 9 та більше
-const clubsCards = cards.filter(card => {
-    return card.cardSuit =
-        "clubs" && card.value !== "6" && card.value !== "7" && card.value !==
-        "8";
-});
+const clubsCards = cards.filter(
+    card => card.cardSuit === "clubs" && card.value !== "6" && card.value !==
+        "7" && card.value !== "8");
 console.log(clubsCards);
 
 // {
@@ -158,13 +156,29 @@ console.log(clubsCards);
 // 'ace','jack','queen','king','joker' color:'', // 'red','black' }
 // =========================
 
-
 //
 // Взяти описану колоду карт, та за допомоги reduce
 // упакувати всі карти по "мастях" в об'єкт { spades:[], diamonds:[],
 // hearts:[], clubs:[] } =========================
 
 
+/*
+ {cardSuit: "spade", value: "ace", color: "black"},
+ {cardSuit: "diamond", value: "ace", color: "red"},
+ {cardSuit: "heart", value: "ace", color: "red"},
+ {cardSuit: "clubs", value: "ace", color: "black"}];
+ */
+
+const asd = cards.reduce((a, card) => {
+    card.cardSuit === "spade" ? a.spades.push(card) :
+        card.cardSuit === "diamond" ? a.diamonds.push(card) :
+            card.cardSuit === "heart" ? a.hearts.push(card) :
+                a.clubs.push(card);
+
+    return a;
+}, {spades: [], diamonds: [], hearts: [], clubs: []});
+
+console.log(asd);
 // взяти з arrays.js (який
 // лежить в папці 2023 plan) масив coursesArray
 // --написати пошук всіх об'єктів, в який в modules є sass
