@@ -161,14 +161,6 @@ console.log(clubsCards);
 // упакувати всі карти по "мастях" в об'єкт { spades:[], diamonds:[],
 // hearts:[], clubs:[] } =========================
 
-
-/*
- {cardSuit: "spade", value: "ace", color: "black"},
- {cardSuit: "diamond", value: "ace", color: "red"},
- {cardSuit: "heart", value: "ace", color: "red"},
- {cardSuit: "clubs", value: "ace", color: "black"}];
- */
-
 const asd = cards.reduce((a, card) => {
     card.cardSuit === "spade" ? a.spades.push(card) :
         card.cardSuit === "diamond" ? a.diamonds.push(card) :
