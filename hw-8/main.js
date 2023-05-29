@@ -277,3 +277,61 @@ const findPrincess = princessArray.find(
     princess => princess.legSize === prince.shoeSize);
 
 console.log(findPrincess);
+
+
+/*
+ class A {
+ constructor() {
+ this.a = 1;
+ }
+ }
+
+ class B extends A {
+ constructor() {
+ super();
+ this.b = 2;
+ }
+ }
+
+ const b = new B();
+ console.log(b);
+
+ class C extends B {
+ constructor() {
+ super();
+ this.c = 3;
+ }
+ }
+
+ const a = new C();
+ console.log(a);
+ */
+
+
+class A {
+    constructor(a) {
+        this.a = a;
+    }
+
+    get foo() {
+        console.log(this.a);
+    }
+}
+
+class B extends A {
+    constructor(a, b) {
+        super(a);
+        this.b = b;
+    }
+}
+
+class C extends B {
+    constructor(a, b, c) {
+        super(a, b);
+        this.c = c;
+    }
+}
+
+const a = new C(1, 2, 3);
+console.log(a);
+a.foo;
