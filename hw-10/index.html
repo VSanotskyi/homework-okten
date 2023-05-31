@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no,
+          initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge"
+    >
+    <title>homework 10</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        a {
+
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 200px;
+
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+
+    <style>
+        .simpsons-container {
+            display: flex;
+            flex-direction: column;
+            width: 700px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .containerTask5 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            background-color: whitesmoke;
+        }
+    </style>
+
+</head>
+<body>
+<a href="../index.html">Go to back</a>
+<!-- Стоврити форму з трьома полями для name, surname, age та кнопкою. При натисканні на кнопку
+зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули
+кнопку, під формою з'явився блок з вашим об'єктом-->
+
+<form class="form-1">
+    <input type="text"
+           name="name"
+    >
+    <input type="text"
+           name="surname"
+    >
+    <input type="number"
+           name="age"
+    >
+    <button type="submit">Submit</button>
+</form>
+
+<div class="container-form-1"></div>
+<!--
+------
+-->
+
+<div class="container-task-2">
+    <p class="text-container-task_2">1</p>
+</div>
+
+<!---->
+<a href="./sessions.html">sessions</a>
+<!---->
+
+<div>
+    <div class="container-task-4"></div>
+    <button type="button"
+            data-action="prev"
+    >prev
+    </button>
+    <button type="button"
+            data-action="next"
+    >next
+    </button>
+</div>
+
+<!---->
+
+<div class="container-task-5">
+    <p id="text">id='text'</p>
+    <button class="btn-task-5">hidden text</button>
+</div>
+
+<!---->
+
+<div class="container-task-6">
+    <input class="input"
+           type="number"
+           name="age"
+    >
+    <p class="user-age"></p>
+    <button class="btn-task-6">check age
+    </button>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
