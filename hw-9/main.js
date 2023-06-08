@@ -27,7 +27,7 @@ const arr = ["Main", "Products", "About us", "Contacts"];
 
 const ulTask2 = document.createElement("ul");
 
-for(const el of arr) {
+for (const el of arr) {
     const li = document.createElement("li");
     li.textContent = el;
     ulTask2.appendChild(li);
@@ -66,7 +66,7 @@ ulTask3.style.display = "flex";
 ulTask3.style.flexDirection = "column";
 ulTask3.style.gap = "10px";
 
-for(const el of coursesAndDurationArray) {
+for (const el of coursesAndDurationArray) {
     const {title, monthDuration} = el;
 
     const li = document.createElement("li");
@@ -113,7 +113,7 @@ document.body.append(ulTask3);
 const containerTask4 = document.createElement("div");
 div.classList.add("container-task-4");
 
-for(const el of coursesAndDurationArray) {
+for (const el of coursesAndDurationArray) {
     const {title, monthDuration} = el;
 
     const div = document.createElement("div");
@@ -183,7 +183,7 @@ let simpsons = [
 const containerTask5 = document.createElement("div");
 containerTask5.classList.add("containerTask5");
 
-for(const simpson of simpsons) {
+for (const simpson of simpsons) {
     const {name, age, surname, info, photo} = simpson;
 
     const div = document.createElement("div");
@@ -222,47 +222,47 @@ let coursesArray = [
         monthDuration: 5,
         hourDuration: 909,
         modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "node.js"],
+            "css",
+            "js",
+            "mysql",
+            "mongodb",
+            "react",
+            "angular",
+            "aws",
+            "docker",
+            "git",
+            "node.js"],
     },
     {
         title: "Java Complex",
         monthDuration: 6,
         hourDuration: 909,
         modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "java core",
-                  "java advanced"],
+            "css",
+            "js",
+            "mysql",
+            "mongodb",
+            "angular",
+            "aws",
+            "docker",
+            "git",
+            "java core",
+            "java advanced"],
     },
     {
         title: "Python Complex",
         monthDuration: 6,
         hourDuration: 909,
         modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "python core",
-                  "python advanced"],
+            "css",
+            "js",
+            "mysql",
+            "mongodb",
+            "angular",
+            "aws",
+            "docker",
+            "python core",
+            "python advanced"],
     },
     {
         title: "QA Complex",
@@ -275,34 +275,34 @@ let coursesArray = [
         monthDuration: 7,
         hourDuration: 909,
         modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "node.js",
-                  "python",
-                  "java"],
+            "css",
+            "js",
+            "mysql",
+            "mongodb",
+            "react",
+            "angular",
+            "aws",
+            "docker",
+            "git",
+            "node.js",
+            "python",
+            "java"],
     },
     {
         title: "Frontend",
         monthDuration: 4,
         hourDuration: 909,
         modules: ["html",
-                  "css",
-                  "js",
-                  "mysql",
-                  "mongodb",
-                  "react",
-                  "angular",
-                  "aws",
-                  "docker",
-                  "git",
-                  "sass"],
+            "css",
+            "js",
+            "mysql",
+            "mongodb",
+            "react",
+            "angular",
+            "aws",
+            "docker",
+            "git",
+            "sass"],
     },
 ];
 
@@ -310,7 +310,7 @@ const containerTask6 = document.createElement("div");
 
 containerTask6.style.border = "1px solid black";
 
-for(const el of coursesArray) {
+for (const el of coursesArray) {
     const {title, monthDuration, hourDuration, modules} = el;
 
     const div = document.createElement("div");
@@ -325,7 +325,7 @@ for(const el of coursesArray) {
     pHourDuration.innerText = `Години: ${hourDuration}`;
     listTitle.innerText = "Модулі:";
 
-    for(const module of modules) {
+    for (const module of modules) {
         const li = document.createElement("li");
 
         li.innerText = module;

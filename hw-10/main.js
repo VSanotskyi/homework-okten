@@ -8,19 +8,18 @@ const nameForm1 = document.createElement("p");
 const surnameForm1 = document.createElement("p");
 const ageForm1 = document.createElement("p");
 
-containerForm1.append(nameForm1, surnameForm1, ageForm1);
 form1.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const {name, surname, age} = e.currentTarget;
 
-    if(!surname && !name && !age) return;
+    if (!surname && !name && !age) return;
 
     nameForm1.innerText = `Name: ${name.value}`;
     surnameForm1.innerText = `Surname: ${surname.value}`;
     ageForm1.innerText = `Age: ${age.value}`;
 
-    document.body.appendChild(containerForm1);
+    containerForm1.append(nameForm1, surnameForm1, ageForm1);
 });
 
 // ----
@@ -31,7 +30,7 @@ form1.addEventListener("submit", (e) => {
 const textContainer = document.querySelector(".text-container-task_2");
 const STORAGE_KEY = "counter";
 
-if(!localStorage.getItem(STORAGE_KEY)) {
+if (!localStorage.getItem(STORAGE_KEY)) {
     localStorage.setItem(STORAGE_KEY, 1);
 }
 
@@ -2484,7 +2483,7 @@ container4.style.justifyContent = "center";
 renderMarkup(iter);
 
 next.addEventListener("click", () => {
-    if(iter === arr.length - 1) return;
+    if (iter === arr.length - 1) return;
 
     iter += 1;
 
@@ -2492,7 +2491,7 @@ next.addEventListener("click", () => {
 });
 
 prev.addEventListener("click", () => {
-    if(iter === 0) return;
+    if (iter === 0) return;
 
     iter -= 1;
 
@@ -2505,6 +2504,7 @@ function renderMarkup(iter) {
         return `<img src="${a.previewURL}" alt="${a.tags}" width="300" height="200">`;
     }).join("");
 }
+
 
 // ---
 
@@ -2535,12 +2535,12 @@ inputTask6.addEventListener("input", (e) => {
 
 btnTask6.addEventListener("click", () => {
 
-    if(userAge <= 0) {
+    if (userAge <= 0) {
         userAgeEl.innerText = "Not correct age!!!";
         return;
     }
 
-    if(userAge < 18) {
+    if (userAge < 18) {
         userAgeEl.innerText = "It`s too early for you!!!";
     } else {
         userAgeEl.innerText = "You can look!!!";
