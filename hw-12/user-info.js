@@ -3,7 +3,7 @@ const url = new URL(location.href);
 const id = url.searchParams.get("id");
 const arr = [];
 
-fetchUserInfo(id).then(creatUserInfo);
+fetchUserInfo(id).then(creatUserInfo).catch(console.log);
 
 function fetchUserInfo(id) {
     return fetch(`https://jsonplaceholder.typicode.com/users?id=${id}`)
