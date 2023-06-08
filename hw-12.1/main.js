@@ -9,13 +9,15 @@ container.addEventListener("click", onHandleClick);
 
 function onHandleClick(evt) {
     if (evt.target.classList.contains("user-post-btn")) {
+        evt.target.disabled = true;
         const el = evt.target;
         const id = evt.target.dataset.id;
 
         fetchPosts(BASE_URL, id).then(posts => {
-            creatPosts(posts, el);
+            creatPosts(posts, el, id);
         });
     }
+
     if (evt.target.classList.contains("comments-btn")) {
         const el = evt.target;
         const id = evt.target.dataset.post;
@@ -27,6 +29,16 @@ function onHandleClick(evt) {
 
     if (evt.target.classList.contains("hide-post-btn")) {
         evt.target.parentElement.classList.add("hide-btn");
+        const id = evt.target.dataset.btnId;
+
+        const arrBtn = evt.currentTarget.getElementsByClassName(
+            "user-post-btn");
+
+        for (const arrEl of arrBtn) {
+            if (id === arrEl.dataset.id) {
+                arrEl.disabled = false;
+            }
+        }
     }
 }
 
@@ -78,7 +90,7 @@ function creatUsersList(users) {
     container.append(ul);
 }
 
-function creatPosts(posts, el) {
+function creatPosts(posts, el, id) {
     const div = document.createElement("div");
     const postList = document.createElement("ul");
     const btn = document.createElement("button");
@@ -87,6 +99,7 @@ function creatPosts(posts, el) {
     btn.type = "button";
     btn.innerText = "Hide comments";
     btn.classList.add("hide-post-btn", "btn");
+    btn.dataset.btnId = `${id}`;
 
     posts.map(post => {
         const postItem = document.createElement("li");
