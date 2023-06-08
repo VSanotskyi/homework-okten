@@ -97,7 +97,7 @@ function creatPosts(posts, el, id) {
 
     postList.classList.add("post-list");
     btn.type = "button";
-    btn.innerText = "Hide comments";
+    btn.innerText = "Hide posts";
     btn.classList.add("hide-post-btn", "btn");
     btn.dataset.btnId = `${id}`;
 
