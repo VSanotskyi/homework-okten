@@ -1,0 +1,49 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+p, ul, li, button {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.user-list, .post-list, .comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-item, .post-item, .comment-item {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.user-text, .post-text, .comment-text {
+    padding-bottom: 10px;
+}
+
+button {
+    min-width: 100px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border: none;
+
+    background-color: #c3d7ff;
+}
+
+button:hover, button:focus {
+    background-color: #3bc8f4;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.hide-btn {
+    display: none;
+}
