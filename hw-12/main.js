@@ -85,7 +85,7 @@
 // ---
 
 const container = document.querySelector(".user-container-js");
-const URL = "http://jsonplaceholder.typicode.com/users";
+const URL = "https://jsonplaceholder.typicode.com/users";
 
 fetchUsers().then(creatUsers).catch(console.log);
 
