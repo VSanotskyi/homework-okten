@@ -1,4 +1,5 @@
 const container = document.querySelector(".container-user-info");
+const BASE_URL = "https://jsonplaceholder.typicode.com/users"
 const url = new URL(location.href);
 const id = url.searchParams.get("id");
 const arr = [];
@@ -6,7 +7,7 @@ const arr = [];
 fetchUserInfo(id).then(creatUserInfo).catch(console.log);
 
 function fetchUserInfo(id) {
-    return fetch(`https://jsonplaceholder.typicode.com/users?id=${id}`)
+    return fetch(`${BASE_URL}?id=${id}`)
         .then(response => {
             if (!response.ok) throw new Error(response.statusText);
 
