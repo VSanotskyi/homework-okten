@@ -99,13 +99,11 @@ function fetchUsers() {
 
 function creatUsers(users) {
     users.map(user => {
-        const h2 = document.createElement("h2");
         const a = document.createElement("a");
 
-        h2.innerText = `Name: ${user.name}, Id: ${user.id}`;
         a.href = `user-details.html?id=${user.id}`;
+        a.innerHTML = `<h2>Name: ${user.name}, Id: ${user.id}</h2>`;
 
-        a.appendChild(h2);
         container.appendChild(a);
     });
 }
