@@ -5,9 +5,30 @@ fetchUsers(BASE_URL).then(creatUsersList);
 
 // -------------------------------------------------------
 
-container.addEventListener("click", showPosts);
-container.addEventListener("click", showComments);
-container.addEventListener("click", hide);
+container.addEventListener("click", onHandleClick);
+
+function onHandleClick(evt) {
+    if (evt.target.classList.contains("user-post-btn")) {
+        const el = evt.target;
+        const id = evt.target.dataset.id;
+
+        fetchPosts(BASE_URL, id).then(posts => {
+            creatPosts(posts, el);
+        });
+    }
+    if (evt.target.classList.contains("comments-btn")) {
+        const el = evt.target;
+        const id = evt.target.dataset.post;
+
+        fetchComments(BASE_URL, id).then(comments => {
+            creatComments(comments, el);
+        });
+    }
+
+    if (evt.target.classList.contains("hide-post-btn")) {
+        evt.target.parentElement.classList.add("hide-btn");
+    }
+}
 
 // --------------------------------------------------------
 
@@ -19,10 +40,27 @@ function fetchUsers(url) {
     });
 }
 
+function fetchPosts(url, id) {
+    return fetch(`${url}/posts?userId=${id}`).then(response => {
+        if (!response.ok) throw new Error(response.statusText);
+
+        return response.json();
+    });
+}
+
+function fetchComments(url, id) {
+    return fetch(`${url}/comments?postId=${id}`).then(response => {
+        if (!response.ok) throw new Error(response.statusText);
+
+        return response.json();
+    });
+}
+
+// --------------------------------------------------------------
+
 function creatUsersList(users) {
     const ul = document.createElement("ul");
-
-    ul.classList.add("user-list", "hide-post-btn");
+    ul.classList.add("user-list");
 
     users.map(user => {
         const li = document.createElement("li");
@@ -38,15 +76,6 @@ function creatUsersList(users) {
     });
 
     container.append(ul);
-}
-
-// --------------------------------------------------------
-function fetchPosts(url, id) {
-    return fetch(`${url}/posts?userId=${id}`).then(response => {
-        if (!response.ok) throw new Error(response.statusText);
-
-        return response.json();
-    });
 }
 
 function creatPosts(posts, el) {
@@ -78,38 +107,6 @@ function creatPosts(posts, el) {
     el.after(div);
 }
 
-function showPosts(evt) {
-    if (!evt.target.classList.contains("user-post-btn")) return;
-
-    const el = evt.target;
-    const id = evt.target.dataset.id;
-
-    fetchPosts(BASE_URL, id).then(posts => {
-        creatPosts(posts, el);
-    });
-}
-
-// ------------------------------------------------------
-
-function fetchComments(url, id) {
-    return fetch(`${url}/comments?postId=${id}`).then(response => {
-        if (!response.ok) throw new Error(response.statusText);
-
-        return response.json();
-    });
-}
-
-function showComments(evt) {
-    if (!evt.target.classList.contains("comments-btn")) return;
-
-    const el = evt.target;
-    const id = evt.target.dataset.post;
-
-    fetchComments(BASE_URL, id).then(comments => {
-        creatComments(comments, el);
-    });
-}
-
 function creatComments(comments, el) {
     const commentList = document.createElement("ul");
     commentList.classList.add("comment-list");
@@ -125,12 +122,4 @@ function creatComments(comments, el) {
     });
 
     el.after(commentList);
-}
-
-// --------------------------------------------------------
-
-function hide(evt) {
-    if (evt.target.classList.contains("hide-post-btn")) {
-        evt.target.parentElement.classList.add("hide-btn");
-    }
 }
