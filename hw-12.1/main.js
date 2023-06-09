@@ -75,20 +75,37 @@ function fetchComments(url, id) {
 
 function creatUsersList(users) {
     const ul = document.createElement("ul");
-    ul.addEventListener("click", showPosts);
 
     ul.classList.add("user-list");
 
     users.map(user => {
         const li = document.createElement("li");
-        li.classList.add("user-item");
-        li.innerHTML = `
-                        <p class="user-text">Name: ${user.name}, ID: ${user.id}</p>
-                        <button class="user-post-btn" 
-                                data-id="${user.id}"
-                                type="button">Show posts</button>`;
-        li.classList.add("user-item");
+        const p = document.createElement("p");
+        const btn = document.createElement("button");
 
+        li.classList.add("user-item");
+        p.classList.add("user-text");
+        btn.classList.add("user-post-btn");
+
+        btn.dataset.id = `${user.id}`;
+
+        p.innerText = `Name: ${user.name}, ID: ${user.id}`;
+
+        btn.addEventListener("click", (evt) => {
+            evt.target.disabled = true;
+            const el = evt.target;
+            const id = evt.target.dataset.id;
+
+            fetchPosts(BASE_URL, id).then(posts => {
+                creatPosts(posts, el, id);
+            });
+        });
+        // li.innerHTML = `
+        // <p class="user-text">Name: ${user.name}, ID:
+        // ${user.id}</p> <button class="user-post-btn" data-id="${user.id}"
+        // type="button">Show posts</button>`;
+
+        li.append(p, btn);
         ul.appendChild(li);
     });
 
