@@ -8,8 +8,8 @@ fetchUsers(BASE_URL).then(creatUsersList);
 container.addEventListener("click", showPosts);
 
 function showPosts(evt) {
-    if (!evt.target.classList.contains("user-post-btn")) return;
-    
+    if (evt.target.nodeName !== "BUTTON") return;
+
     evt.target.disabled = true;
     const el = evt.target;
     const id = evt.target.dataset.id;
