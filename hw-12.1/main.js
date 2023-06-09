@@ -1,5 +1,5 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com";
-const container = document.querySelector(".container-js");
+const container = document.querySelector(".container-js-hw12");
 
 fetchUsers(BASE_URL).then(creatUsersList);
 
@@ -16,6 +16,8 @@ function onHandleClick(evt) {
         fetchPosts(BASE_URL, id).then(posts => {
             creatPosts(posts, el, id);
         });
+
+        return;
     }
 
     if (evt.target.classList.contains("comments-btn")) {
@@ -25,6 +27,8 @@ function onHandleClick(evt) {
         fetchComments(BASE_URL, id).then(comments => {
             creatComments(comments, el);
         });
+
+        return;
     }
 
     if (evt.target.classList.contains("hide-post-btn")) {
