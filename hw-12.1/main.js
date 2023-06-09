@@ -5,7 +5,7 @@ fetchUsers(BASE_URL).then(creatUsersList);
 
 // -------------------------------------------------------
 
-container.addEventListener("click", showPosts);
+// container.addEventListener("click", showPosts);
 
 function showPosts(evt) {
     if (evt.target.nodeName !== "BUTTON") return;
@@ -75,6 +75,8 @@ function fetchComments(url, id) {
 
 function creatUsersList(users) {
     const ul = document.createElement("ul");
+    ul.addEventListener("click", showPosts);
+
     ul.classList.add("user-list");
 
     users.map(user => {
