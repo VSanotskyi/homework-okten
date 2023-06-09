@@ -5,45 +5,44 @@ fetchUsers(BASE_URL).then(creatUsersList);
 
 // -------------------------------------------------------
 
-container.addEventListener("click", onHandleClick);
+container.addEventListener("click", showPosts);
 
-function onHandleClick(evt) {
-    if (evt.target.classList.contains("user-post-btn")) {
-        evt.target.disabled = true;
-        const el = evt.target;
-        const id = evt.target.dataset.id;
+function showPosts(evt) {
+    if (!evt.target.classList.contains("user-post-btn")) return;
+    
+    evt.target.disabled = true;
+    const el = evt.target;
+    const id = evt.target.dataset.id;
 
-        fetchPosts(BASE_URL, id).then(posts => {
-            creatPosts(posts, el, id);
-        });
+    fetchPosts(BASE_URL, id).then(posts => {
+        creatPosts(posts, el, id);
+    });
 
-        return;
-    }
 
-    if (evt.target.classList.contains("comments-btn")) {
-        const el = evt.target;
-        const id = evt.target.dataset.post;
+    /*if (evt.target.classList.contains("comments-btn")) {
+     const el = evt.target;
+     const id = evt.target.dataset.post;
 
-        fetchComments(BASE_URL, id).then(comments => {
-            creatComments(comments, el);
-        });
+     fetchComments(BASE_URL, id).then(comments => {
+     creatComments(comments, el);
+     });
 
-        return;
-    }
+     return;
+     }
 
-    if (evt.target.classList.contains("hide-post-btn")) {
-        evt.target.parentElement.classList.add("hide-btn");
-        const id = evt.target.dataset.btnId;
+     if (evt.target.classList.contains("hide-post-btn")) {
+     evt.target.parentElement.classList.add("hide-btn");
+     const id = evt.target.dataset.btnId;
 
-        const arrBtn = evt.currentTarget.getElementsByClassName(
-            "user-post-btn");
+     const arrBtn = evt.currentTarget.getElementsByClassName(
+     "user-post-btn");
 
-        for (const arrEl of arrBtn) {
-            if (id === arrEl.dataset.id) {
-                arrEl.disabled = false;
-            }
-        }
-    }
+     for (const arrEl of arrBtn) {
+     if (id === arrEl.dataset.id) {
+     arrEl.disabled = false;
+     }
+     }
+     }*/
 }
 
 // --------------------------------------------------------
