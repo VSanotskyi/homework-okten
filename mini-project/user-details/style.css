@@ -1,0 +1,65 @@
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+body, h4, p, ul, li, a {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+.btn {
+    border: none;
+    border-radius: 18px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+
+    background-color: #f7ead3;
+}
+
+.btn:hover, .btn:focus {
+    color: #f7ead3;
+    background-color: #375e72;
+}
+
+.user-info-text {
+    margin-bottom: 10px;
+}
+
+.user-info-title {
+    margin-bottom: 5px;
+}
+
+.hr {
+    margin: 30px 0;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+.post-item {
+
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.post-link {
+    display: block;
+    padding: 10px 20px;
+
+    text-decoration: none;
+    color: inherit;
+    background-color: #f7ead3;
+}
+
+.post-link:hover, .post-link:focus {
+    color: #f7ead3;
+    background-color: #375e72;
+}

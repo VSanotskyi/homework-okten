@@ -1,0 +1,56 @@
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, p, ul, li, a {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.post-title {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.post-text {
+    text-align: center;
+}
+
+.container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+
+    list-style: none;
+}
+
+.container ul li {
+    min-width: 47.5vw;
+    padding: 10px;
+
+    background-color: #e1e1e1;
+}
+
+.container ul li h4 {
+    margin-bottom: 20px;
+}
+
+.container ul li p {
+    display: block;
+
+    margin-bottom: 10px;
+}
+
+.container ul li p:last-child {
+    margin-bottom: 0;
+}
