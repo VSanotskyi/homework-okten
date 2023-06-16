@@ -1,33 +1,28 @@
-const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+// id
 const postId = new URL(location.href).searchParams.get("postId");
+// DOM element
 const container = document.querySelector(".container-js");
+// Base url
+const BASE_URL_POST = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+const BASE_URL_COMMENTS = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
 
-Promise.all([fetchPost(BASE_URL, postId), fetchComments(BASE_URL, postId)])
+// Promise
+Promise.all([fetchApi(BASE_URL_POST), fetchApi(BASE_URL_COMMENTS)])
     .then(data => {
         creatPostEl(data[0]);
         creatCommentList(data[1]);
     }).catch(fetchError);
 
-// ---
-
-function fetchPost(url, id) {
-    return fetch(`${url}/${id}`).then(response => {
+// fetch
+function fetchApi(url) {
+    return fetch(url).then(response => {
         if (!response.ok) throw new Error(response.status);
 
         return response.json();
     });
 }
 
-function fetchComments(url, id) {
-    return fetch(`${url}/${id}/comments`).then(response => {
-        if (!response.ok) throw new Error(response.status);
-
-        return response.json();
-    });
-}
-
-// ---
-
+// creat
 function creatPostEl(post) {
     const {title, body} = post;
 
@@ -76,6 +71,7 @@ function creatCommentList(comments) {
     container.append(commentsTitle, commentList);
 }
 
+// error
 function fetchError(err) {
     container.innerHTML =
         `<h1 class="title-error">Sorry, I can't find :(<br>${err}</h1>`;

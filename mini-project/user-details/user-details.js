@@ -1,23 +1,37 @@
-const BASE_URL = "https://jsonplaceholder.typicode.com/users";
+// get id
 const userId = new URL(location.href).searchParams.get("id");
+// DOM element
 const container = document.querySelector(".container-js");
 const btn = document.querySelector(".btn");
+// Base url
+const BASE_URL_USER = `https://jsonplaceholder.typicode.com/users/${userId}`;
+const BASE_URL_USER_POSTS = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
+// arr container
 const userInfoArray = [];
 
-fetchUserInfo(BASE_URL, userId).then(creatUserInfo).catch(fetchError);
+// fetch
+fetchApi(BASE_URL_USER).then((user) => {
+    creatUserInfo(user);
+    btn.style.display = "block";
+}).catch(fetchError);
 
-btn.addEventListener("click", openUserPosts);
-
-// ---
-
-function fetchUserInfo(url, id) {
-    return fetch(`${url}/${id}`).then(response => {
+function fetchApi(url) {
+    return fetch(url).then(response => {
         if (!response.ok) throw new Error(response.status);
 
         return response.json();
     });
 }
 
+// listener
+btn.addEventListener("click", openUserPosts);
+
+function openUserPosts(evt) {
+    evt.currentTarget.style.display = "none";
+    fetchApi(BASE_URL_USER_POSTS).then(creatPostList).catch(fetchError);
+}
+
+// creat element
 function creatUserInfo(user) {
     const userContainer = document.createElement("div");
     const arr = recursion(user);
@@ -45,21 +59,6 @@ function creatUserInfo(user) {
     });
 }
 
-// ----
-
-function fetchUserPosts(url, id) {
-    return fetch(`${url}/${id}/posts`).then(response => {
-        if (!response.ok) throw new Error(response.status);
-
-        return response.json();
-    });
-}
-
-function openUserPosts(evt) {
-    evt.currentTarget.style.display = "none";
-    fetchUserPosts(BASE_URL, userId).then(creatPostList).catch(fetchError);
-}
-
 function creatPostList(posts) {
     const postsTitle = document.createElement("h2");
     const postList = document.createElement("ul");
@@ -85,8 +84,7 @@ function creatPostList(posts) {
     container.append(postsTitle, postList);
 }
 
-// ---
-
+// recursion api response
 function recursion(user) {
     for (const userKey in user) {
         const value = user[userKey];
@@ -104,8 +102,7 @@ function recursion(user) {
     return userInfoArray;
 }
 
-// ---
-
+// error
 function fetchError(err) {
     container.innerHTML = `<h1 class="title-error">${err}</h1>`;
 }
